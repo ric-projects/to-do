@@ -30,10 +30,12 @@ body {
 
 .sidebar{
     display: flex;
+    flex-direction: column;
     width: 30vw;
     background-color:antiquewhite;
     height: 70vh;
-    justify-content: center;
+    align-items: center;
+    gap: 10px;
 }
 
 .sidebarTitle{
@@ -41,15 +43,41 @@ body {
     font-size: 2rem;
 }
 
+.sidebarWrap{
+    min-width: 25vw;
+    min-height: 10vh;
+    border: 2px solid rgb(168, 152, 152);
+}
+
 .todos{
     display: flex;
+    flex-direction: column;
     width: 70vw;
-    justify-content: center;
+    /* justify-content: center; */
     background-color:beige;
-
+    align-items: center;
+    gap: 10px;
 }
 
 .contentTitle{
     font-size: 2rem;
     font-weight: bold;
+}
+
+.contentWrap{
+    min-width: 65vw;
+    min-height: 10vh;
+    border: 2px solid rgb(129, 115, 115);
+    display: flex;
+}
+
+dialog::backdrop{
+    backdrop-filter: blur(4px);
+}
+
+.todoObj{
+    background-color: aliceblue;
+    max-width:150px;
+    border: 1px solid gray;
+    border-radius: 6px;
 }
