@@ -81,3 +81,11 @@ dialog::backdrop{
     border: 1px solid gray;
     border-radius: 6px;
 }
+
+.projObj{
+    display: flex;
+    background-color: aliceblue;
+    border:1px solid gray;
+    border-radius: 6px;
+    justify-content: space-between;
+}
