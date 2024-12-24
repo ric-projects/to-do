@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- TO REMOVE BEFORE BUILDING -->
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+<script defer src="main.js"></script></head>
+<body>
+    <div class="wrapper">
+        <div class="header">
+            <div class="headerText">Odin To-Do List</div>
+        </div>
+        <div class="mainPage">
+            <div class="sidebar">
+                <div class="sidebarTitle">Projects</div>
+                <div class="sidebarWrap"></div>
+                <button class="newProject">New Project</button>
+            </div>
+            <div class="todos">
+                <div class="contentTitle">To-dos</div>
+                <div class="contentWrap"></div>
+                <button class="newTodo">New To-do</button>
+            </div>
+        </div>    
+    </div>
+
+    <dialog class="projModal">
+        <form action="" class="formProjModal">
+            <div class="projModalTitle" style="font-weight: bold;">New Project</div>
+            <br>
+            <label for="projTitle">Title</label>
+            <input type="text" name="projTitle" id="projTitle">
+            <br>
+            <label for="projDesc">Description</label>
+            <input type="text" name="projDesc" id="projDesc">
+            <br><br>
+            <button value="cancel" formmethod="dialog">Cancel</button>
+            <button id="confirmProjBtn" value="default">Confirm</button>
+        </form>
+    </dialog>
+
+    <dialog class="todoModal">
+        <form action="dialog" class="formModal">
+            <div class="todoModalTitle" style="font-weight: bold;">New To-Do</div>
+            <br>
+            <label for="todoTitle">Title</label>
+            <input type="text" name="todoTitle" id="todoTitle">
+            <br>
+            <label for="todoDesc">Description</label>
+            <input type="text" name="todoDesc" id="todoDesc">
+            <br>
+            <label for="todoDate">Date</label>
+            <input type="date" name="todoDate" id="todoDate">
+            <br>    
+            <label for="todoPriority">Priority:</label>
+            <select name="todoPriority" id="todoPriority">
+                <option value="Urgent" selected>Urgent</option>
+                <option value="Important">Important</option>
+            </select>
+            <label for="projIndex">Project:</label>
+            <select name="projIndex" id="projIndex">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+            </select>
+            <br><br>
+            <button value="cancel" formmethod="dialog">Cancel</button>
+            <button id="confirmTodoBtn" value="default">Confirm</button>
+
+        </form>
+    </dialog>
+
+</body>
+<!-- TO REMOVE BEFORE BUILDING -->
+    <!-- <script src="index.js" type="module"></script> -->
+
+</html>
