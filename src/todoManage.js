@@ -57,6 +57,28 @@ class Task {
     };
 };
 
+class TaskReviver {
+    changePriority() {
+        this.priority = this.priority === 'Urgent' ? 'Important' : 'Urgent';
+    };
+
+    setAsComplete() {
+        this.complete = this.complete === false ? true : false;
+    };
+}
+
+function setClasses(){
+    const outerLength = allTodos.myProjects.length;
+    const instance = new TaskReviver();
+    for (let index = 0; index < outerLength; index++) {
+        for(let j = 0; j < allTodos.myProjects[index].length; j++){
+            Object.setPrototypeOf(allTodos.myProjects[index][j], instance);
+            return allTodos.myProjects[index][j];
+        };  
+    };
+};
+setClasses();
+
 
 // To implement
 function delTodo(index, projIndex) {
