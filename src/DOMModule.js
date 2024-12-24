@@ -111,19 +111,19 @@ function renderTodo(title, description, date, priority, index, projIndex){
     // return index;
 };
 
-function renderProj(title, description){
+function renderProj(title, description, i){
     const projWrap = document.querySelector('.sidebarWrap');
 
     const projObj = document.createElement('div');
     // removed from innerhtml <button class="view" data-index="${allTodos.myProjects.length - 1}">View</button>
 
     projObj.innerHTML = `<p>${title}</p>
-    <button class="deleteProj" data-index="${allTodos.myProjects.length - 1}">Del</button>` //edit btn?
+    <button class="deleteProj" data-index="${i}">Del</button>` //edit btn?
     projObj.className = 'projObj';
 
     const viewBtn = document.createElement('button');
     // viewBtn.innerHTML = `<button class="view" proj-index="${allTodos.myProjects.length - 1}">View</button>`;
-    viewBtn.setAttribute('proj-index', allTodos.myProjects.length - 1);
+    viewBtn.setAttribute('proj-index', i);
     viewBtn.classList.add('view');
     viewBtn.textContent = "View";
     projObj.appendChild(viewBtn);

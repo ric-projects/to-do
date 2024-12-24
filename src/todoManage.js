@@ -1,12 +1,28 @@
 import { renderTodo, renderProj, renderSection } from "./DOMModule";
 export { allTodos, addTask, addProject, editTodo, delTodo };
 
+// const firstRun = (function firstRun() {
+//     if (!localStorage.getItem("myArray")){
+//         const myProjects = [[],];
+//         myProjects[0].title = "Default";
+//         const string = JSON.stringify(myProjects);
+//         localStorage.setItem("myArray", string);
+//         // return { myProjects };
+//     };
+// })();
 // array to hold all to=dos
 const allTodos = (function allTodos() {
     // const myLibrary = [];
-    const myProjects = [[],];
-    myProjects[0].title = "Default";
-    return { /*myLibrary,*/ myProjects };
+    if (!localStorage.getItem("myArray")){
+        const myProjects = [[],];
+        myProjects[0].title = "Default";
+        return { myProjects };
+    } else {
+        const retString = localStorage.getItem("myArray");
+        const myProjects = JSON.parse(retString);
+        return { myProjects };
+    };
+    // return { /*myLibrary,*/ myProjects };
 })();
 
 // Project Constructor
@@ -46,6 +62,7 @@ class Task {
 function delTodo(index, projIndex) {
     allTodos.myProjects[projIndex].splice(index, 1);
     renderSection(projIndex);
+    saveToLocal();
 };
 
 // To Implement
@@ -60,6 +77,7 @@ function addTask(title, description, date, importance, projIndex){
     allTodos.myProjects[projIndex].push(newTask);
     renderTodo(title, description, date, importance, allTodos.myProjects[projIndex].length -1, projIndex); //-1
     renderSection(projIndex);
+    saveToLocal();
 };
 
 function addProject(title, description){
@@ -68,7 +86,8 @@ function addProject(title, description){
     newProj.description = description;
     allTodos.myProjects.push(newProj);
     console.log('addProj' + allTodos.myProjects);
-    renderProj(title, description);
+    renderProj(title, description, allTodos.myProjects.length - 1);
+    saveToLocal();
 };
 
 function editTodo(title, description, date, importance, projIndex, index){
@@ -80,11 +99,24 @@ function editTodo(title, description, date, importance, projIndex, index){
     
     const indexHere = index;
     renderSection(projIndex);
+    saveToLocal();
+};
+
+function saveToLocal(){
+    const string = JSON.stringify(allTodos.myProjects);
+    localStorage.setItem("myArray", string);
 };
 
 // 3 default tasks
 // addTask('cook','food','today','Urgent', "0");
 // addTask('read','book','tomorrow','Important', "0");
-addTask('gym', 'exercise', 'next week', 'Important', 0);
-renderProj(allTodos.myProjects[0].title, allTodos.myProjects[0].description);
-addProject('reno', 'paint the appt');
+// addTask('gym', 'exercise', 'next week', 'Important', 0);
+renderSection(0);
+
+for (let i = 0; i < allTodos.myProjects.length; i++) {
+    // const element = array[index];
+    renderProj(allTodos.myProjects[i].title, allTodos.myProjects[i].description, i);
+};
+// renderProj(allTodos.myProjects[0].title, allTodos.myProjects[0].description);
+
+// addProject('reno', 'paint the appt');
